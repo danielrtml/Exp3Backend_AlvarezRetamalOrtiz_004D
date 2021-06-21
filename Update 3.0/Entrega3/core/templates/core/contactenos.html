@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+  <head>
+  {%load static%}
+  <title>Tech-nology</title>
+  <link href="{% static 'img/icon.png'%}" rel="shortcut icon" >
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="{% static 'js/Validacion.js' %}"></script>
+  
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/business-frontpage.css'%}" rel="stylesheet">
+  
+    <!--Link hacia los iconos-->
+    <link href="https://use.fontawesome.com/5e22f11e35.css" media="all" rel="stylesheet">
+    
+    <script>
+      $(function() 
+      {
+        $("formulario").validate({
+             rules: {
+                    NickUsuario: "required",
+                    nombre: "required",
+                    email: "required",
+                    mensaje: "required",
+                    idMotivo: "required",
+                    },   
+                    
+               messages: 
+                {
+                NickUsuario: {
+                    required: 'Ingresa tu nick',
+                  },
+                nombre: {
+                    required: 'Ingrese su nombre',
+                },
+                email:{
+                    required: 'Ingrese su email',
+                    
+                },
+                mensaje:{
+                    required: 'Escriba su mensaje',
+                },
+                idMotivo:{
+                    required: 'Seleccione su motivo',
+                },
+                 
+            }//messages
+        }); //$('#formulario').validate
+    }); //function
+</script>
+
+  </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon-png">
+              <img src="{% static 'img/icon.png'%}" style="width: 70px; height: 55.47px;">
+            </span>
+          </button>
+
+      <!---Icono de logo-->
+        <a class="navbar-brand" href="{% url 'Index' %}">
+          <img src="{% static 'img/icon.png' %}" style="width:70px">
+        </a>
+    
+      <!---Opciones de navegación e iconos por sección-->    
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'Index' %}" >Inicio<span class="sr-only">(current)</span></a> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="api">Criptomonedas</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="news">Noticias</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="who-r-we">Quienes somos</a>
+              </li>
+              <li class="nav-item">
+              <li class="nav-item">
+                <a class="nav-link active" href="galeria">Galería de fotos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="contactenos">Contáctenos</a>
+              </li>
+              <div class="ini-se">
+                <li class="nav-item">
+                  <a class="nav-link active" href="ini-se">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="registro">Registrarse</a>
+                </li>   
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="container-inside">
+          <div class="row">
+            <div class="row">
+              <h1>Creando Vehiculos</h1>
+            </div>
+            <form method="POST" id="formulario" action="#">
+
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group">
+                        {{usuario.NickUsuario.label}}
+                        {{usuario.NickUsuario}} 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        {{usuario.nombre.label}}
+                        {{usuario.nombre}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        {{usuario.email.label}}
+                        {{usuario.email}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        {{usuario.mensaje.label}}
+                        {{usuario.mensaje}}
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                      {{usuario.idMotivo.label}}
+                      {{usuario.idMotivo}}
+                  </div>
+              </div>
+
+                <div class="row">
+                    <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+                    <input type="reset" class="btn btn-primary" id="limpiar" value="limpiar">
+                </div>
+                <div class="buttom-enviar">
+                  <a href="feedback" class="btn btn-danger">
+                    Ver feedback de los usuarios
+                  </a> 
+              </div>
+
+            </form>
+
+              </div>
+    
+            </form>
+        </div>
+      </div>
+    
+      </div> 
+
+
+
+    <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Juan Álvarez, Pablo Ortiz y Daniel Retamal @Copyrigth Derechos reservados.</p>
+    </div>
+    <div class="container" style="text-align: center;">
+      <h3 class="footer__title" >Síguenos</h3>
+      <div class="footer__social-networks">
+        <a class="a-social-networks" href="#">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>		
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-youtube-play" aria-hidden="true"></i>
+      </a>
+      </div>
+  </div>
+  </footer>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  
+</body>
+</html>
