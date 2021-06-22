@@ -42,7 +42,7 @@
                <a class="nav-link active" href="{% url 'Index' %}">Inicio<span class="sr-only">(current)</span></a> 
              </li>
              <li class="nav-item">
-               <a class="nav-link active" href="templates\api">Criptomonedas</a>
+               <a class="nav-link active" href="api">Criptomonedas</a>
            </li>
              <li class="nav-item">
                <a class="nav-link active" href="news">Noticias</a>
@@ -73,29 +73,44 @@
      </nav>
 
 <body>
-    <div class="row">
-        <h1 class="tittle">
-            Feedback de los usuarios
-        </h1>
-      </div> 
-      
-    <div class="container-inside">
-        <div class="row">
-                <form method="POST" action="#" id="formulario">
-                    {%csrf_token%}
-                    <div class="form-group">
-                        {{form.as_table}}
-                    </div>
-                
-                
-                        <div class="form-group">
-                         <input type="submit" class="btn btn-danger" id="modificar" value="Modificar">
-                        <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
-                    </div>
-                </form>
-
-        </div>
-    </div>    
+            <div class="row">
+                <h1 class="tittle">
+                    Feedback de los usuarios
+                </h1>
+              </div>
+            <div class="container-inside">
+              <img src="{% static 'img/chayi.jpg' %}" class="the-greatest-man-of-all-time" style="width: 30%;">
+            </div>
+            <div class="container">
+              <table class="table table-responsive table-straped" style="color: silver">
+                <br>
+                  <thead>  
+                      <tr>
+                          <th scope="col">NickUsuario</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">email</th>
+                          <th scope="col">mensaje</th>
+                          <th scope="col">idMotivo</th>
+                          <th scope="col">Opciones</th>
+                          <th scope="col">No me elimines uwu :C</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {%for ni in usuarios%}
+                          <tr>
+                              <td>{{ni.NickUsuario}}</td>
+                              <td>{{ni.nombre}}</td>
+                              <td>{{ni.email}}</td>
+                              <td>{{ni.mensaje}}</td>
+                              <td>{{ni.idMotivo}}</td>
+                              <td><a href="{% url 'mod_feedback' ni.NickUsuario%}" class="btn btn-primary">Modificar </a></td>
+                              <td><a href="{% url 'del_feedback' ni.NickUsuario%}" class="btn btn-danger">Eliminar</a></td>
+                          </tr>
+                      {%endfor%}
+                    </tbody>
+                    </table>
+            </div>  
+            
              
     
   <hr>  
